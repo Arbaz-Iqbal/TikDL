@@ -1,7 +1,7 @@
 name: Build APK                      # Actions tab mein ye naam dikhega
 on:
-  push:                              # jab bhi file add/change ho, build shuru
-  workflow_dispatch:                 # "Run workflow" button bhi chalega
+  push:                              # har commit par build shuru
+  workflow_dispatch:                 # manual "Run workflow" button
 jobs:
   build:
     runs-on: ubuntu-latest           # GitHub ka free computer
@@ -13,8 +13,8 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v3 # Gradle install karo
         with:
-          gradle-version: '8.7'
-      - run: gradle assembleDebug    # APK banao
+          gradle-version: '8.7'      # Gradle ka version
+      - run: gradle assembleDebug --stacktrace # APK banao, error detail ke saath
       - uses: actions/upload-artifact@v4 # APK download ke liye rakho
         with:
           name: TikDL-apk
