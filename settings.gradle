@@ -1,0 +1,17 @@
+// Tells Gradle where to download build plugins from
+pluginManagement {
+    repositories {
+        google()            // Android plugins live here
+        mavenCentral()      // general libraries
+        gradlePluginPortal()// Gradle plugins
+    }
+}
+// Tells Gradle where to download app libraries from
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "TikDL" // project name
+include ':app'             // our single app module
